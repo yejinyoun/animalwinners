@@ -16,7 +16,7 @@ const Animal = {
   desc: "-unknown animal-",
   type: "",
   age: 0,
-  winner: false,
+  winner: true,
   // TODO: Add winner-info
 };
 
@@ -86,6 +86,23 @@ function displayAnimal(animal) {
   clone.querySelector("[data-field=age]").textContent = animal.age;
 
   // TODO: Add event listeners for star and winner
+  function checkWinner() {
+    const winners = allAnimals.filter(isWinner);
+    console.log(winners);
+
+    function isWinner(anAnimal) {
+      if (anAnimal.winner === true) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    //function checkWinnerType() {}
+
+    //function checkWinnerNumber() {}
+  }
+
   function toggleWinner() {
     if (animal.winner === false) {
       animal.winner = true;
@@ -96,7 +113,9 @@ function displayAnimal(animal) {
     buildList();
   }
 
-  clone.querySelector("[data-field=winner]").addEventListener("click", toggleWinner);
+  const winnerResult = checkWinner();
+
+  clone.querySelector("[data-field=winner]").addEventListener("click", checkWinner);
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
