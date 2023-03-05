@@ -86,6 +86,17 @@ function displayAnimal(animal) {
   clone.querySelector("[data-field=age]").textContent = animal.age;
 
   // TODO: Add event listeners for star and winner
+  function toggleWinner() {
+    if (animal.winner === false) {
+      animal.winner = true;
+    } else {
+      animal.winner = false;
+    }
+    console.log("hihi");
+    buildList();
+  }
+
+  clone.querySelector("[data-field=winner]").addEventListener("click", toggleWinner);
 
   // append clone to list
   document.querySelector("#list tbody").appendChild(clone);
